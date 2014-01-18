@@ -2,21 +2,20 @@
 <head>
 <title>Studio</title>
 <script>
-  var Studio = {
-  getId: function(id) {
-    document.getElementById(id);
+  function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
-  pm: getId("pm");
-  sm: getId("sm");
-  star: getId("star");
-  stor: getId("stor");
-}
-var s = new Studio();
-
-s.pm.addActionListener("click" function() {
-s.getId("mf").src = "music.html";
-});
-
+  function $Q(name) {
+    getParameterByName(name);
+  }
+  if ($Q("music") == "1") {
+    document.getElementById("mf").src = "music.html";
+  } else if ($Q("video") == "1") {
+    document.getElementById("rf").src = "camera_studio.html"
+  }
 </script>
 </head>
 <body>
@@ -25,5 +24,6 @@ s.getId("mf").src = "music.html";
 <button id="star">Record</button>
 <button id="stor">Stop Record</button>
 <iframe id="mf" width="1px" height="1px" frameborder="no">Frames must be enabled to play music!</iframe>
+<iframe id="rf" width="480px" height="320px" frameborder="no">Frames must be enabled to play music!</iframe>
 </body>
 </html>
