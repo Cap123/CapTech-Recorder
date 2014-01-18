@@ -1,7 +1,23 @@
 <html>
 <head>
 <title>Studio</title>
-<script src="lib/studio.js" type="text/javascript"></script>
+<script>
+  var Studio = {
+  getId: function(id) {
+    document.getElementById(id);
+  }
+  pm: getId("pm");
+  sm: getId("sm");
+  star: getId("star");
+  stor: getId("stor");
+}
+var s = new Studio();
+
+s.pm.addActionListener("click" function() {
+s.getId("mf").src = "music.html";
+});
+
+</script>
 </head>
 <body>
 <button id="pm">Play Music</button>
