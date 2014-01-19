@@ -11,14 +11,21 @@
   function $Q(name) {
     getParameterByName(name);
   }
-  if ($Q("music") == "1") {
-    document.getElementById("mf").src = "music.html";
-  } else if ($Q("video") == "1") {
-    document.getElementById("rf").src = "camera_studio.html"
+  function check() {
+    if ($Q("music") == "1") {
+      document.getElementById("mf").src = "music.html";
+    } else {
+      return;
+    }
+    if ($Q("video") == "1") {
+      document.getElementById("rf").src = "camera_studio.html"
+    } else {
+      return;
+    }
   }
 </script>
 </head>
-<body>
+<body onLoad="check()">
 <iframe id="mf" width="1px" height="1px" frameborder="no">Frames must be enabled to play music!</iframe>
 <iframe id="rf" width="480px" height="320px" frameborder="no">Frames must be enabled to play music!</iframe>
 </body>
